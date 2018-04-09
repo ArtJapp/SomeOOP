@@ -6,18 +6,20 @@ using namespace std;
 class Queue {
 public:
     Queue()
-    {
-        size = 3;
-        current = 0;
+    {                               //инициализация очереди
+        size = 3;                   //задается исходный размер равный 3
+        current = 0;                //текущее количество элементов становится равным 0
         queue = new int[size];
     }
     ~Queue()
     {
+        //при удалении экземпляра возникает необходимость в очистке памяти от массива, иначе от так и останется висеть в памяти
         delete[] queue;
     }
     
     void fileInput()
     {
+        //функция ввода данных из файла file.txt
         fstream fin("file.txt");
         int temp;
         while(!fin.eof())
@@ -28,16 +30,17 @@ public:
     }
     
     int getCurrentSize()
-    {
+    {   //геттер значения текущего размера массива
         return size;
     }
 
     void push(int num)
     {
         if (getCurrentSize() - current < differCondition) {
+            // если достигнуто условие перестройки массива, то есть осталось менее differCondition ячеек, то вызывается функция resize
             resize();
         }
-
+        
         queue[current++] = num;
     }
     void print_all()
