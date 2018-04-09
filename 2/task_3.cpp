@@ -10,11 +10,13 @@ struct Num {
 
     void Init()
     {
+        // инициализация пустого (нулевого) числа
         Real = 0;
         Imaginary = 0;
     }
     void Init(double a)
     {
+        // инициализация вещественного числа
         Real = a;
         Imaginary = 0;
     }
@@ -25,10 +27,12 @@ struct Num {
     }
     void Display()
     {
+        // функция вывода числа в консоли
         cout << Real << " " << Imaginary << "i" << endl;
     }
     string toString()
     {
+        //функция преобразования числа в строку
         ostringstream str_r, str_i;
         str_r << Real;
         string real = str_r.str();
@@ -36,11 +40,11 @@ struct Num {
         string imaginary;
 
         if (Imaginary == 1) {
-            imaginary = "+";
+            imaginary = "+";    //для того, чтобы получить не а+1i, a просто a+i
         }
         else {
             if (Imaginary == -1) {
-                imaginary = "-";
+                imaginary = "-";    //соответственно для получения а-i вместо a-1j
             }
             else {
                 str_i << Imaginary;
@@ -57,15 +61,15 @@ struct Num {
         cout << "Введите вещественную часть: ";
         while (!(cin >> Real)) {
             cout << "Некорректный ввод !\n";
-            cin.clear(); // сбрасывает все биты потока, тоесть поток становится "хорошим"
-            cin.sync(); // удаляет данные из буффера
+            cin.clear(); // сбрасывает все биты потока, то есть поток становится "хорошим"
+            cin.sync(); // удаляет данные из буфера
             cout << "Введите вещественную часть: ";
         }
         cout << "Введите мнимую часть: ";
         while (!(cin >> Imaginary)) {
             cout << "Некорректный ввод !\n";
-            cin.clear(); // сбрасывает все биты потока, тоесть поток становится "хорошим"
-            cin.sync(); // удаляет данные из буффера
+            cin.clear(); // сбрасывает все биты потока, то есть поток становится "хорошим"
+            cin.sync(); // удаляет данные из буфера
             cout << "Введите мнимую часть: ";
         }
     }
