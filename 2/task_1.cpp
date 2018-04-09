@@ -13,17 +13,19 @@ struct Complex
 
 void Init(Complex &number)
 {
+    // вызов без особых аргументов => вещественная и мнимая части нулевые
     number.Real = 0;
     number.Imaginary = 0;
 }
 
-void Init(Complex &number, int a)
+void Init(Complex &number, double a)
 {
+    // вызов с 1 аргументом, так как любое вещественное число a может быть представлено как a+0i
     number.Real = a;
     number.Imaginary = 0;
 }
 
-void Init(Complex &number, int a, int b)
+void Init(Complex &number, double a, double b)
 {
     number.Real = a;
     number.Imaginary = b;
@@ -31,7 +33,6 @@ void Init(Complex &number, int a, int b)
 
 void Read(Complex &number)
 {
-    // TODO: change this shit with cin.good() some how
     double a, b;
     cout << "Введите вещественную часть: ";
         while(!(cin>>a)) 
@@ -65,6 +66,7 @@ string toString(Complex &number)
 
 void Display(Complex &number)
 {
+    //функция вывода числа на экран
     ostringstream str_r,str_i;
     str_r << number.Real;
     string real = str_r.str();
@@ -98,24 +100,28 @@ void Display(Complex &number)
 
 void add(Complex &ans, Complex a, Complex b)
 {
+    //функция вычисления суммы
     ans.Real = a.Real + b.Real;
     ans.Imaginary = a.Imaginary + b.Imaginary;
 }
 
 void sub(Complex &ans, Complex a, Complex b)
 {
+    //функция вычисления разности
     ans.Real = a.Real - b.Real;
     ans.Imaginary = a.Imaginary - b.Imaginary;
 }
 
 void mul(Complex &ans, Complex a, Complex b)
 {
+    //функция вычисления произведения
     ans.Real = a.Real * b.Real - a.Imaginary * b.Imaginary;
     ans.Imaginary = a.Real * b.Imaginary + b.Real * a.Imaginary;
 }
 
 void div(Complex &ans, Complex a, Complex b)
 {
+    //функция вычисления частного
     ans.Real = a.Real * b.Real + a.Imaginary * b.Imaginary;
     ans.Imaginary = a.Imaginary * b.Real - a.Real * b.Imaginary;
     double coeff = b.Real * b.Real + b.Imaginary * b.Imaginary;
@@ -125,11 +131,13 @@ void div(Complex &ans, Complex a, Complex b)
 
 bool equ(Complex a, Complex b)
 {
+    //функция сравнения чисел
     return a.Real == b.Real && a.Imaginary == b.Imaginary;
 }
 
 void conj(Complex &ans, Complex a)
 {
+    //функция вычисления сопряженного числа
     ans.Real = a.Real;
     if (a.Imaginary == 0.0)
     {
