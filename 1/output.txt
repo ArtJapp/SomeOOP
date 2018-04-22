@@ -1,3 +1,0 @@
-Information about point coords:
-Coordinate x: 3.5
-Coordinate y: 7.2
